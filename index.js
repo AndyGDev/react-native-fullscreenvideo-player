@@ -237,6 +237,7 @@ export default class VideoPlayer extends Component {
     this.seekTouchStart = e.nativeEvent.pageX;
     this.seekProgressStart = this.state.progress;
     this.wasPlayingBeforeSeek = this.state.isPlaying;
+    this.props.isSeeking(true);
     this.setState({
       isSeeking: true,
       isPlaying: false,
@@ -244,6 +245,7 @@ export default class VideoPlayer extends Component {
   }
 
   onSeekRelease() {
+    this.props.isSeeking(false);
     this.setState({
       isSeeking: false,
       isPlaying: this.wasPlayingBeforeSeek,
